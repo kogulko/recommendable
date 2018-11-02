@@ -7,9 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 #
-50.times { Author.create(name: FFaker::Book.title )}
-15.times { Genre.create(name: FFaker::Book.genre )}
-
-300.times { Book.create(title: FFaker::Book.title, description: FFaker::Book.description,
-                        author: Author.all.sample, genre: Genre.all.sample, image_url: FFaker::Book.cover)}
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
