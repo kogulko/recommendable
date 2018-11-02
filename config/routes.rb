@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users
-  resources :books, only: [:index, :show]
+  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
+  resources :books, only: [:index, :show] do
+    member do
+      get 'like'
+      get 'dislike'
+    end
+  end
+  resources :reviews, only: [:index, :create]
   root 'books#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

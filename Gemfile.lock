@@ -111,6 +111,9 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    foundation-icons-sass-rails (3.0.0)
+      railties (>= 3.1.1)
+      sass-rails (>= 3.1.1)
     foundation-rails (5.4.5.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
@@ -299,6 +302,7 @@ DEPENDENCIES
   devise
   draper
   ffaker
+  foundation-icons-sass-rails
   foundation-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
