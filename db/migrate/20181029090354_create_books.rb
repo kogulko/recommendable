@@ -5,6 +5,7 @@ class CreateBooks < ActiveRecord::Migration[5.2]
       t.string :description
       t.string :length
       t.string :image_url
+      t.string :release_year
       t.references :author, foreign_key: true
       t.references :genre, foreign_key: true
 

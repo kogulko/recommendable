@@ -2,8 +2,14 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.4.4'
-
+gem 'foundation-rails'
 gem 'devise'
+gem 'cancan' # or cancancan
+gem 'draper'
+gem 'pundit'
+gem 'active_admin_theme'
+gem 'activeadmin'
+
 gem 'ffaker'
 gem 'sidekiq'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -12,3 +12,4 @@
 
 300.times { Book.create(title: FFaker::Book.title, description: FFaker::Book.description,
                         author: Author.all.sample, genre: Genre.all.sample, image_url: FFaker::Book.cover)}
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
