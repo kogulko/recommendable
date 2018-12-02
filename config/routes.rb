@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
   resources :books, only: [:index, :show] do
+    collection do
+      get 'recomendations'
+      get 'best'
+    end
     member do
       get 'like'
       get 'dislike'

@@ -5,13 +5,15 @@
         %h1
           %a{:href => "/"}
             %i.fi-play-video
-            MovieStore
+            Bookly
       %li.toggle-topbar
         %a{:href => "#"}
           %span Menu
     %section.top-bar-section
       %ul.right
         - if signed_in?
+          %li= link_to 'Recomandations', recomendations_books_path(user_id: current_user.id)
+          %li= link_to 'TOP books', best_books_path
           %li= link_to current_user.email, edit_user_registration_path
           %li= link_to "Logout", destroy_user_session_path, method: :delete
         - else
