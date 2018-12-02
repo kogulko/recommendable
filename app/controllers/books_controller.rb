@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_action :find_user, only: [:like, :dislike]
   def index
-    @books = Book.all
+    @books = Book.all.page params[:page]
   end
 
   def show

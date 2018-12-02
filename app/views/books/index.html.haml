@@ -1,0 +1,14 @@
+%h4.column Featured Books
+.column
+  %ul.books-grid.no-bullet.row
+    - @books.each do |book|
+      %li.large-3.medium-4.small-12.column
+        .book-card.padly
+          = link_to book, class: "poster" do
+            = image_tag book.image_url
+          .book-info.ell.glassy-bg.padmy.padlx
+            .title
+              %h6
+                = book.title
+                %span
+                  (#{book.release_year})
