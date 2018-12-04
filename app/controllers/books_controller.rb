@@ -4,19 +4,24 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all.page params[:page]
+    @title = 'Featured Books'
   end
 
   def best
     @books = Kaminari.paginate_array(Book.top(8)).page(params[:page]).per(8)
+    @title = 'TOP Books'
     render 'index'
   end
 
   def recomendations
     @books = Kaminari.paginate_array(@user.recommended_books).page(params[:page]).per(8)
+    @books = Kaminari.paginate_array(Book.last(8)).page(params[:page]).per(8)
+    @title = 'Recommended Books'
     render 'index'
   end
 
   def show
+    @in_top = Book.top(100).include?(@book)
   end
 
   def like

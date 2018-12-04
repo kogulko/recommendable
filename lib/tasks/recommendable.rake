@@ -28,4 +28,18 @@ namespace :recommendable do
     end
 
   end
+
+  desc 'Unrate some books'
+  task unrate_books: :environment do
+    books = Book.all
+    User.all.find_each do |user|
+      puts "Unrate for User##{user.id}"
+      books.sample(150).each do |book|
+        user.unlike(book)
+        user.undislike(book)
+      end
+    end
+  end
+
+
 end

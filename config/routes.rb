@@ -8,8 +8,8 @@ Rails.application.routes.draw do
       get 'best'
     end
     member do
-      get 'like'
-      get 'dislike'
+      post 'like'
+      post 'dislike'
     end
   end
   resources :reviews, only: [:index, :create]

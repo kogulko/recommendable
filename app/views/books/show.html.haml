@@ -2,16 +2,25 @@
   = image_tag @book.image_url
   - if signed_in?
     .row
-      = link_to like_book_path(@book, user_id: current_user.id) do
-        %i.fi-like.large
-      = link_to dislike_book_path(@book, user_id: current_user.id) do
-        %i.fi-dislike.large
+      - if current_user.likes?(@book)
+        = button_to 'Already Liked', like_book_path(@book, user_id: current_user.id), class: 'success button', disabled: true
+        = button_to 'Dislike', dislike_book_path(@book, user_id: current_user.id), class: 'alert button'
+      - elsif current_user.dislikes?(@book)
+        = button_to 'Like', like_book_path(@book, user_id: current_user.id), class: 'success button'
+        = button_to 'Already Disliked', dislike_book_path(@book, user_id: current_user.id), class: 'alert button', disabled: true
+      - else
+        = button_to 'Like', like_book_path(@book, user_id: current_user.id), class: 'success button'
+        = button_to 'Dislike', dislike_book_path(@book, user_id: current_user.id), class: 'alert button'
 .large-9.small-12.column
   %h3
     = @book.title
     (#{@book.release_year})
-  %p.label.book-label.radius.mb1
-    $ #{5.0}
+  %h4
+    = @book.author.name
+  %h4
+    = @book.genre.name
+  - if @in_top
+    %p.label.book-label.radius.mb1 TOP-100
   %p= @book.description
   - if signed_in?
     = form_for :review, url: reviews_path do |f|
