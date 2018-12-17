@@ -23,7 +23,7 @@ Recommendable.configure do |config|
   # number to improve Redis memory usage.
   #
   # Default: nil
-  config.nearest_neighbors = nil
+  config.nearest_neighbors = 10
 
   # Like kNN, but also uses some number of most dissimilar users when
   # updating recommendations for a user. Because, hey, disagreements are
@@ -32,10 +32,12 @@ Recommendable.configure do |config|
   # to improve Redis memory usage.
   #
   # Default: nil
-  config.furthest_neighbors = nil
+  # config.furthest_neighbors = nil
 
   # The number of recommendations to store per user. Set this to a lower
   # number to improve Redis memory usage.
+  config.orm = :active_record
+
   #
   # Default: 100
   config.recommendations_to_store = 100

@@ -8,14 +8,13 @@ class BooksController < ApplicationController
   end
 
   def best
-    @books = Kaminari.paginate_array(Book.top(8)).page(params[:page]).per(8)
+    @books = Kaminari.paginate_array(Book.top(100)).page(params[:page]).per(8)
     @title = 'TOP Books'
     render 'index'
   end
 
   def recomendations
     @books = Kaminari.paginate_array(@user.recommended_books).page(params[:page]).per(8)
-    @books = Kaminari.paginate_array(Book.last(8)).page(params[:page]).per(8)
     @title = 'Recommended Books'
     render 'index'
   end
